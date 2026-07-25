@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spare Parts Store</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <!-- Default logo file name is logo.png in the same folder.
+           You can replace it or upload a new logo via Admin → Settings. -->
+      <img id="logoImg" src="logo.png" alt="Logo" onerror="this.style.display='none'">
+      <h1 id="siteTitle">Spare Parts Store</h1>
+    </div>
+    <nav class="top-nav">
+      <button id="navShop">Shop</button>
+      <button id="navCart">Cart (<span id="cartCount">0</span>)</button>
+      <button id="navLogin">Login</button>
+      <div id="userNameDisplay" class="user-display" hidden>
+        <span id="currentUserName"></span>
+        <button id="logoutBtn" class="link-btn">Logout</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="app">
+    <!-- Login / Register -->
+    <section id="loginSection" class="panel">
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button id="tabLogin" class="active">Login</button>
+          <button id="tabRegister">Register</button>
+        </div>
+        <div id="loginForm" class="auth-form">
+          <h2>Login</h2>
+          <p class="note">Login as Admin or User. Admin credentials are embedded in the code.</p>
+          <div class="form-row">
+            <label>Username</label>
+            <input id="loginUsername" type="text" />
+          </div>
+          <div class="form-row">
+            <label>Password</label>
+            <input id="loginPassword" type="password" />
+          </div>
+          <div class="form-actions">
+            <button id="loginBtn" class="primary">Login</button>
+          </div>
+          <div class="hint">
+            <strong>Admin credentials (in code):</strong> <code>admin / admin123</code>
+          </div>
+        </div>
+
+        <div id="registerForm" class="auth-form" hidden>
+          <h2>Register</h2>
+          <div class="form-row">
+            <label>Full name</label>
+            <input id="regFullName" type="text" />
+          </div>
+          <div class="form-row">
+            <label>Username</label>
+            <input id="regUsername" type="text" />
+          </div>
+          <div class="form-row">
+            <label>Password</label>
+            <input id="regPassword" type="password" />
+          </div>
+          <div class="form-actions">
+            <button id="registerBtn" class="primary">Create Account</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop -->
+    <section id="shopSection" class="panel" hidden>
+      <div class="hero">
+        <!-- Default hero photo file name is hero.jpg. Replace or upload via admin. -->
+        <img id="heroImg" src="hero.jpg" alt="Hero" onerror="this.style.display='none'">
+        <div class="hero-overlay">
+          <h2 id="heroTitle">Quality Spare Parts</h2>
+          <p id="heroSub">Reliable parts for vehicles and equipment</p>
+        </div>
+      </div>
+
+      <div class="content-wrap">
+        <aside class="filters">
+          <h3>Filters</h3>
+          <label>Search</label>
+          <input id="searchInput" type="text" placeholder="Search parts..." />
+          <label>Category</label>
+          <select id="filterCategory">
+            <option value="">All</option>
+          </select>
+        </aside>
+
+        <section class="products-area">
+          <div class="products-grid" id="productsGrid"></div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Cart -->
+    <section id="cartSection" class="panel" hidden>
+      <h2>Your Cart</h2>
+      <div id="cartList"></div>
+      <div class="cart-actions">
+        <div id="cartTotal" class="cart-total">Total: <span>0</span></div>
+        <button id="checkoutBtn" class="primary">Checkout</button>
+        <button id="clearCartBtn" class="danger">Clear Cart</button>
+      </div>
+    </section>
+
+    <!-- User Dashboard -->
+    <section id="userSection" class="panel" hidden>
+      <h2>User Dashboard</h2>
+      <div id="userOrders">No orders yet.</div>
+      <div id="userAccountInfo"></div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section id="adminSection" class="panel" hidden>
+      <h2>Admin Panel</h2>
+      <div class="admin-grid">
+        <div class="admin-card">
+          <h3>Site Settings</h3>
+          <button id="openSettings" class="secondary">Open Settings</button>
+        </div>
+        <div class="admin-card">
+          <h3>Products</h3>
+          <button id="openProducts" class="secondary">Manage Products</button>
+        </div>
+        <div class="admin-card">
+          <h3>Users</h3>
+          <button id="openUsers" class="secondary">Manage Users</button>
+        </div>
+        <div class="admin-card">
+          <h3>Orders</h3>
+          <button id="openOrders" class="secondary">View Orders</button>
+        </div>
+      </div>
+
+      <div id="adminArea"></div>
+    </section>
+
+    <!-- Modals / Panels for Admin -->
+    <div id="modal" class="modal" hidden>
+      <div class="modal-content">
+        <button id="modalClose" class="modal-close">&times;</button>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div>&copy; <span id="footerYear"></span> <span id="footerTitle">Spare Parts Store</span></div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
